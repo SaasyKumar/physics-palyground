@@ -1,0 +1,4 @@
+- `.ini` file (short for initialization file) is a plain text configuration file used by programs to store settings. It tells a program how it should behave when it starts.
+- **Taichi** - high perform, open source lang embedded in Python, designed for high-performance numerical computation. It is particularly well-suited for simulations and graphics applications. Physics simulations and Machine learning etc. ***GPU programming frame work***
+- Backward simulation - where light particles are placed behind the black hole or any observing object and see how the particles are affected by the object. 
+- **Number of particles** - the number of light particles that are used in the simulation.

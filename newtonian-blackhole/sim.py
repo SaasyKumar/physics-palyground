@@ -139,10 +139,24 @@ def update_particles(mouse_pos: ti.types.vector(2, ti.f32), mouse_state: ti.i32)
         r_col = ti.pow(t, 2.0) * 1.5
         g_col = ti.pow(t, 4.0) * 1.2
         b_col = ti.pow(1.0 - t, 0.5) * 0.8 + ti.pow(t, 3.0) * 1.2
+        # r_col = 1
+        # g_col = 0.54901
+        # b_col =0
         
         # Enhance brightness for very close/fast particles
         brightness = 0.5 + 0.5 * t
         color[i] = ti.Vector([r_col, g_col, b_col]) * brightness
+        #         idx = ti.cast(ti.random() * 4, ti.i32)
+        # c = ti.Vector([0.0, 0.0, 0.0])
+        # if idx == 0:
+        #     c = ti.Vector([1.0, 0.54901, 0.0])
+        # elif idx == 1:
+        #     c = ti.Vector([1.0, 0.392, 0.0])
+        # elif idx == 2:
+        #     c = ti.Vector([1.0, 0.4705, 0.07843])
+        # else:
+        #     c = ti.Vector([1.0, 0.666, 0.1568])
+        # color[i] = c * brightness
 
 # Print controls
 print("=" * 60)
@@ -157,7 +171,7 @@ print("   [Right Click]  - Gravitational repulsion from mouse cursor")
 print("=" * 60)
 
 # Init fields
-dt[None] = 0.05
+dt[None] = 0.001
 paused[None] = 0
 initialize_particles()
 
@@ -206,11 +220,11 @@ while window.running:
     bh_pos_field[0] = bh_pos
     
     # Outer horizon glow
-    bh_color_field[0] = ti.Vector([0.8, 0.2, 0.5])
-    canvas.circles(bh_pos_field, radius=R_EVENT_HORIZON * 1.2, per_vertex_color=bh_color_field)
+    bh_color_field[0] = ti.Vector([1, 0.64, 0])
+    canvas.circles(bh_pos_field, radius=R_EVENT_HORIZON * 1.1, per_vertex_color=bh_color_field)
     
     # Inner horizon glow
-    bh_color_field[0] = ti.Vector([0.2, 0.4, 0.8])
+    bh_color_field[0] = ti.Vector([1, 0.64, 0])
     canvas.circles(bh_pos_field, radius=R_EVENT_HORIZON * 1.05, per_vertex_color=bh_color_field)
     
     # Actual Event Horizon (black mass)
